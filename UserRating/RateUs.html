@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rate Us</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+      .heading {
+        font-size: 25px;
+        margin-right: 25px;
+      }
+
+      .fa {
+        font-size: 15px;
+      }
+
+      .checked {
+        color: orange;
+      }
+
+      /* Responsive layout - make the columns stack on top of each other instead of next to each other */
+      @media (max-width: 400px) {
+        .side,
+        .middle {
+          width: 100%;
+        }
+        .right {
+          display: none;
+        }
+      }
+      .card {
+        border: none;
+      }
+      @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+      .star-rating {
+        font-size: 0;
+      }
+      .star-rating__wrap {
+        display: inline-block;
+        font-size: 1rem;
+      }
+      .star-rating__wrap:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .star-rating__ico {
+        float: right;
+        padding-left: 2px;
+        cursor: pointer;
+        color: orange;
+      }
+      .star-rating__ico:last-child {
+        padding-left: 0;
+      }
+      .star-rating__input {
+        display: none;
+      }
+      .star-rating__ico:hover:before,
+      .star-rating__ico:hover ~ .star-rating__ico:before,
+      .star-rating__input:checked ~ .star-rating__ico:before {
+        content: "\f005";
+      }
+      .mg {
+        margin: 20px;
+      }
+    </style>
+    <script>
+      $(document).ready(function() {
+        $('button[type="button"]').attr("disabled", true);
+
+        $(textarea).on("keyup", function() {
+          //validate the presence of text in textarea
+          var textarea_value = $("#textarea").val();
+
+          if (textarea_value != "") {
+            $('button[type="button"]').attr("disabled", false);
+          } else {
+            $('button[type="button"]').attr("disabled", true);
+          }
+        });
+
+        $("#submit").click(function() {
+          addComment();
+        });
+
+        function addComment() {
+          // retrieve text from textarea
+          var $text = $.trim($("#textarea").val());
+
+          // create star rating and check it
+          var $star = $("<div/>").addClass("star");
+          var $spanchecked = $("<span/>").addClass("fa fa-star checked");
+          var $span = $("<span/>").addClass("fa fa-star");
+          var $val = parseInt($("input[type='radio']:checked").val());
+          for ($i = 0; $i < 5; $i++) {
+            if ($i < $val) {
+              $star.append($spanchecked.clone());
+            } else {
+              $star.append($span.clone());
+            }
+          }
+
+          // create new div element and append
+          var $1stdiv = $("<div/>").addClass("row mg");
+          var $2nddiv = $("<div/>").addClass("col-sm-3");
+          var $namediv = $("<div/>").append("user");
+          var $date = $("<div/>").append(todayDate());
+          $2nddiv = $2nddiv.append($namediv, $date);
+
+          var $3rddiv = $("<div/>")
+            .addClass("col-sm-9 card-text")
+            .append($star, $text);
+          var $all = $1stdiv.append($2nddiv, $3rddiv);
+
+          $("#comment")
+            .children(":eq(1)")
+            .after($all);
+        }
+
+        function todayDate() {
+          const monthNames = [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "June",
+            "July",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ];
+
+          var today = new Date();
+          var dd = today.getDate();
+
+          var mm = monthNames[today.getMonth()];
+          var yyyy = today.getFullYear();
+          if (dd < 10) {
+            dd = "0" + dd;
+          }
+
+          if (mm < 10) {
+            mm = "0" + mm;
+          }
+          today = mm + " " + dd + ", " + yyyy;
+          return today;
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="demo" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+
+      <!-- The slideshow -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="kl.jpg" width="100%" height="500" />
+        </div>
+        <div class="carousel-item">
+          <img src="batu.jpg" width="100%" height="500" />
+        </div>
+        <div class="carousel-item">
+          <img src="pavi.jpg" width="100%" height="500" />
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="carousel-control-prev" href="#demo" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#demo" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+
+    <div class="container-fluid mb-3">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <div class="mb-3">
+            <!-- comment box-->
+            <div class="container" id="comment">
+              <h2 class="font-weight-medium">Reviews</h2>
+              <hr />
+              <div class="row mg">
+                <div class="col-sm-3">
+                  <div>Ziy En</div>
+                  <div>Jan 29, 2019</div>
+                </div>
+                <div class="col-sm-9 card-text">
+                  <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                  This was exactly what we wanted in an intro tour. We were
+                  taken to notable city locations, given enough time to take
+                  photos, and then moved on to the next location. We were also
+                  able to visit a terrific batik factory and watch experts
+                  produce wonderful works of art. Our transportation was
+                  comfortable and our guide was well informed. This tour was a
+                  very good value and I would recommend it for all first-time
+                  visitors to KL.
+                </div>
+              </div>
+
+              <div class="row mg">
+                <div class="col-sm-3">
+                  <div>Chor</div>
+                  <div>Jan 3, 2019</div>
+                </div>
+                <div class="col-sm-9 card-text">
+                  <div>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star "></span>
+                    <span class="fa fa-star"></span>
+                  </div>
+                  What a horrible tour. The information was limited and we were
+                  essentially brought from one tourist scam to the next. This is
+                  not a city tour it is a tour to tourist shops to encourage you
+                  to buy items. As soon as you get in each store they are
+                  shouting prices at you not giving you much background about
+                  the products. I couldn't wait for the tour to end. Would NOT
+                  recommend.
+                </div>
+              </div>
+            </div>
+
+            <!-- textbox -->
+            <div class="container">
+              <h4>Rate this place</h4>
+              <div class="container">
+                <form class="form-group" action="rateUs.php" method="POST">
+                  <label for="commentInput"></label>
+                  <textarea
+                    class="form-control"
+                    id="textarea"
+                    rows="3"
+                    placeholder="Enter your review here!"
+                  ></textarea>
+                  <br />
+                  <!-- star input -->
+                  <div class="star-rating">
+                    <div class="star-rating__wrap">
+                      <input
+                        class="star-rating__input"
+                        id="star-rating-5"
+                        type="radio"
+                        name="rating"
+                        value="5"
+                      />
+                      <label
+                        class="star-rating__ico fa fa-star-o fa-lg"
+                        for="star-rating-5"
+                        title="5 out of 5 stars"
+                      ></label>
+                      <input
+                        class="star-rating__input"
+                        id="star-rating-4"
+                        type="radio"
+                        name="rating"
+                        value="4"
+                      />
+                      <label
+                        class="star-rating__ico fa fa-star-o fa-lg"
+                        for="star-rating-4"
+                        title="4 out of 5 stars"
+                      ></label>
+                      <input
+                        class="star-rating__input"
+                        id="star-rating-3"
+                        type="radio"
+                        name="rating"
+                        value="3"
+                      />
+                      <label
+                        class="star-rating__ico fa fa-star-o fa-lg"
+                        for="star-rating-3"
+                        title="3 out of 5 stars"
+                      ></label>
+                      <input
+                        class="star-rating__input"
+                        id="star-rating-2"
+                        type="radio"
+                        name="rating"
+                        value="2"
+                      />
+                      <label
+                        class="star-rating__ico fa fa-star-o fa-lg"
+                        for="star-rating-2"
+                        title="2 out of 5 stars"
+                      ></label>
+                      <input
+                        class="star-rating__input"
+                        id="star-rating-1"
+                        type="radio"
+                        name="rating"
+                        value="1"
+                      />
+                      <label
+                        class="star-rating__ico fa fa-star-o fa-lg"
+                        for="star-rating-1"
+                        title="1 out of 5 stars"
+                      ></label>
+                    </div>
+                  </div>
+
+                  <br />
+                  <input
+                    class="btn btn-primary pull-right"
+                    type="submit"
+                    id="submit"
+                    value="Submit"
+                  >
+                    
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

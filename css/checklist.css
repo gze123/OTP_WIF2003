@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    min-width: 250px;
+    min-height: 250px;
+    background-color: darkslategrey;
+}
+main {
+    background-color: #3d3d3d;
+}
+#myUL,
+#myDIV {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Include the padding and border in an element's total width and height */
+* {
+    box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul.a {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the list items */
+ul.a {
+    cursor: pointer;
+    position: relative;
+    padding: 0 0 0 35px;
+    list-style-type: none;
+    background: #eeeeee;
+    font-size: 18px;
+    transition: 0.2s;
+    border-color: rgb(146, 145, 145);
+    border-width: 0.5px 0.5px 0.5px 0.5px;
+
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+ul.a li:nth-child(odd) {
+    background: #ffffff;
+    border-color: rgb(182, 182, 182);
+    border-width: 0.5px 0.5px 0 0.5px;
+    border-style: solid;
+    padding: 0 0 0 5px;
+}
+ul.a li:nth-child(even) {
+    background: #f5fff5e3;
+    border-color: rgb(182, 182, 182);
+    border-width: 0.5px 0.5px 0 0.5px;
+    border-style: solid;
+    padding: 0 0 0 5px;
+}
+
+/* Darker background-color on hover */
+ul.a li:hover {
+    background: rgb(22, 109, 51);
+    color: aliceblue;
+    font-size: 20px;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul.a li.checked {
+    background: rgb(85, 104, 104);
+    color: white;
+    text-decoration: line-through;
+    border-width: 0 0 0 0;
+}
+
+/* Add a "checked" mark when clicked on */
+ul.a li.checked::before {
+    font-size: 10px;
+    content: " ";
+    position: absolute;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    /* top: 10px; */
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
+}
+
+/* Style the close button */
+.close {
+    /* position: absolute; */
+    right: 0;
+    top: 0;
+    padding: 1px;
+}
+
+.close:hover {
+    background-color: #ff473a;
+    color: white;
+}
+
+/* Style the header */
+.header1 {
+    background-color: #d6d6d6;
+    padding: 10px 20px 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Clear floats after the header */
+.header1:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the input */
+input {
+    border: none;
+    border-radius: 0;
+    width: 73%;
+    padding: 10px;
+    float: auto;
+    font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+    margin: auto;
+    border: 3px solid #3e5648 !important;
+    background-color: #e6e6e6;
+    color: #0c4e27 !important;
+    padding: 5px;
+    width: 20%;
+    float: right;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 50px;
+}
+
+.addBtn:hover {
+    color: #ffffff !important;
+    border-width: 3px;
+    background-color: #173021;
+    border-color: #bdbdbd !important;
+    transition: all 0.5s ease 0s;
+}
+#myInput {
+    margin: auto;
+    border-radius: 50px;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; /* Footer height */
+}
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+#content-wrap {
+    padding-bottom: 2.5rem; /* Footer height */
+}

@@ -1,0 +1,38 @@
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+#content-wrap {
+    padding-bottom: 2.5rem; /* Footer height */
+    background-color: rgb(255, 253, 223);
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem; /* Footer height */
+}
+#submitbtn {
+    float: right;
+}
+#btnSubmit {
+    margin-left: -3.625rem;
+    background-color: rgb(24, 119, 255) !important;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+
+
+}
+.trip1con {
+    text-align: right;
+}
+/* css on editPlane.php */
+#btnSubmit2 {
+    width: 33%;
+    margin-left: 23.375rem;
+    background-color: rgb(24, 119, 255) !important;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+}
